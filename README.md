@@ -15,5 +15,5 @@
 
 - `Status Filter` dropdown menu will help to filter the card by its status with `All` as default and can view by either `Completed` or `Not Completed`
 
-- [Click here]() to preview the deployed webpage.
+- [Click here](https://react-todoapp-task.netlify.app/) to preview the deployed webpage.
  
