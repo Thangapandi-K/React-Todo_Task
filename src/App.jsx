@@ -12,9 +12,9 @@ const App = () => {
   const [filter, setFilter] = useState('All');
   const [editcardId, setEditCardId] = useState(null);
 
-
+  
   const addTodo = (todoTitle, todoMessage) => {
-    if(todoButton === 'Add Todo') {
+    if(todoButton === 'Add Todo') { // add new todo card
       let newTodo = {
         name: todoTitle,
         message: todoMessage,
@@ -22,7 +22,7 @@ const App = () => {
         status: 'Not Completed'
       }
       setTodoCard([...todoCard, newTodo]);
-    } else if (todoButton === 'Update Todo') {
+    } else if (todoButton === 'Update Todo') { //update todo card
       const updateCard = todoCard.map((card) => card.id === editcardId ? {...card, name: todoTitle, message: todoMessage} : card);
 
       setTodoCard(updateCard);
@@ -36,6 +36,7 @@ const App = () => {
   }
 
 
+  // changing card status
   const todoStatus = (cardStatus, id) => {
     const statusUpdate = todoCard.map((card) =>
       card.id === id ? {...card, status: cardStatus} : card
@@ -43,7 +44,7 @@ const App = () => {
     setTodoCard(statusUpdate);
   }
 
-
+  //edit card details
   const editCard = (name, message, id) => {
     setTodoButton('Update Todo');
     setTodoName(name);
@@ -51,13 +52,13 @@ const App = () => {
     setEditCardId(id);
   }
 
-
+  // delete card
   const delTodo = (id) => {
     const delCard = todoCard.filter((ele) => ele.id !== id)
     setTodoCard([...delCard]);
   }
 
-
+  // filter cards
   const cardsFilter = todoCard.filter((card) => {
     if(filter === 'All') {
       return card;
@@ -115,7 +116,8 @@ const App = () => {
         </ul>
       </div>
     </div>
-    <div className='row mt-4'>
+    <div className='row mt-4'> 
+      {/* to show filtered cards */}
       {
         cardsFilter.length === 0 ? <h3 className='text-center'>No Todos Added</h3> :
         cardsFilter.map((card) => {
